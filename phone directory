@@ -1,0 +1,39 @@
+class Solution{
+    static ArrayList<ArrayList<String>> displayContacts(int n, 
+                                        String contact[], String s)
+    {
+        // code here
+      ArrayList<ArrayList<String>> ans = new ArrayList<>();
+   
+        for(int i=1; i<=s.length(); i++)
+        {
+            Set<String> set  = new HashSet<>();
+            String curr = s.substring(0,i);
+            for(int j =0; j<contact.length; j++)
+            {
+                if(contact[j].length() >= s.substring(0,i).length())
+                {
+                    String curr2 = contact[j].substring(0,i);
+                
+                    if(curr.equals(curr2))
+                    {
+                        set.add(contact[j]);
+                    }
+                }
+    
+            }
+            if(set.isEmpty())
+            {
+                set.add("0");
+            }
+               ArrayList<String> sub_ans = new ArrayList<>();
+               for(String x : set)
+               sub_ans.add(x);
+               
+               Collections.sort(sub_ans);
+            
+            ans.add(sub_ans);
+        }
+        return ans;
+    }
+}
